@@ -9,7 +9,7 @@
 
 
   <div class="keys">
-    <div data-key="65" class="key">
+    <div data-key="65" class="key" onclick="palyDrumVioce(this)">
       <kbd>A</kbd>
       <span class="sound">clap</span>
     </div>
@@ -59,6 +59,22 @@
 
 <script>
 
+  window.addEventListener('transitionend', function(e) {
+    console.log(e.propertyName);
+    if (e.propertyName === 'transform') {
+      e.target.classList.remove('playing');
+    }
+  })
+
+  window.addEventListener('keydown', function(e) {
+    const keyCode = e.keyCode + '' || '';
+    const audioDom = document.querySelector(`audio[data-key="${keyCode}"]`);
+    const divKey = document.querySelector(`div[data-key="${keyCode}"]`);
+    if (!audioDom) return;
+    divKey.classList.add('playing');
+    audioDom.currentTime = 0;
+    audioDom.play();
+  })
 </script>
 
 
