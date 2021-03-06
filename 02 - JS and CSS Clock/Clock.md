@@ -7,5 +7,10 @@
 # 难点
 
 如何使用 JS 设置 CSS 样式？
+使用<code>style</code>设置属性<br>
+<code>element.style.height = '100px'</code><br>
+使用<code>setAttribute</code>设置属性<br>
+<code>setAttribute('style', 'padding: 100px; background: red')</code>
 
 如何使指针围绕中心旋转？
+使用 <code>transform: rotate(45deg)</code>设置元素旋转
