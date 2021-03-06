@@ -1,50 +1,30 @@
-# 重点知识
+# 思路
 
-## getAttribute
-
-## 键盘元素 <kbp>
-
-## audio
-
-## 事件委托
+1. 敲击键盘，获取对应的 DOM 元素
+2. 播放音频
+3. 改变样式
 
 # 难点
 
-如何将元素和音频相互关联
+## 如何将键盘按键和页面按钮相互关联？
 
-在<code>div</code>元素上绑定点击事件，<code>keydown</code> 未生效。
-解决思路：绑定事件委托事件。
+使用事件委托，监听<code>keydown</code>事件，能够通过<code>keyCode</code> 获得对应的键盘值。<br>
+使用<code>document.querySelector</code>获取页面上对应的元素。<br>
 
-e.keyCode 获得键盘元素的按键
+注：<br>
+<code>keydown</code>和<code>keyup</code>分别表示键盘按下、弹起来，触发的事件。<br>
+<code>keypress</code>表示的则是能够生成字符的才会触发事件。比如：<code>shift</code><code>ctrl</code>就不会触发<code>keypress</code>事件<br>
 
-如何触发音频的自动播放？
-解决思路：使用<code>autoplay</code> <code>play()</code>
+## 如何播放音频？
 
-如何获取音频列表中对应的元素
+使用 <code>play()</code> 方法
 
-如何解决无法连续敲击的问题？
-解决方式：添加<code>currentTime</code>属性
-<code>currentTime</code>
+## 如何解决无法连续敲击的问题？
 
-作用：todo
+添加<code>currentTime</code>属性,设置为<code>0</code><br>
+表示将播放时间戳改为初始位置。
 
-js 插入样式 playing
+## 如何解决样式无法恢复的问题？
 
-如何在点击之后，删除样式
-
-propertyName
-
-```
-问题：无法连续敲击键盘，也没有高亮样式
-
-  window.addEventListener('keydown', function(e) {
-    const keyCode = e.keyCode + '' || '';
-    let audioList = document.getElementsByTagName('audio');
-    for (let i = 0; i < audioList.length; i++) {
-      const audioNum = audioList[i].getAttribute('data-key');
-      if (keyCode === audioNum) {
-        audioList[i].play()
-      }
-    }
-  })
-```
+<code>transitionend</code> 事件会在 <code>CSS transition</code> 结束后触发。
+在触发该事件后，利用<code>propertyName</code>属性找到对应的元素，取消高亮样式。
