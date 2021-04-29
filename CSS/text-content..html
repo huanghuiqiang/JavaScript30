@@ -1,0 +1,42 @@
+<!-- 文字一行的时候居中显示，多行的时候居左显示 -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .constr {
+        width: 240px;
+        margin: 20px auto;
+      }
+      
+      .box {
+        text-align: center;
+        background-color: #cd0000;
+      }
+
+      .content {
+        /* display: inline-block; */
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="constr">
+      <div class="box">
+        <p id="conMore" class="content">文字内容</p>
+      </div>
+    <!-- 按钮 -->
+    <p><button id="btnMore">更多文字</button></p>
+  </div>
+    <script>
+      var btn = document.getElementById('btnMore'),
+          content = document.getElementById('conMore');
+
+      if (btn && content) {
+        btn.onclick = function() {
+          content.innerHTML += "新增文字"
+        }
+      }
+    </script>
+  </body>
+</html>
