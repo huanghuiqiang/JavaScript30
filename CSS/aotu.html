@@ -1,0 +1,38 @@
+<!-- 利用文字的最小宽度制作凹凸文字 -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .ao, .tu {
+        display: inline-block;
+        width: 0;
+        margin: 35px;
+
+      }
+
+      .ao::before, 
+      .tu::before {
+        outline: 2px solid #cd0000;
+        color: #fff;
+      }
+
+      .ao::before {
+        content: "love 你 love";
+      }
+      .tu::before {
+        content: "你 love 我";
+      }
+
+      .tu {
+        direction: rtl;
+      }
+
+    </style>
+  </head>
+  <body>
+    <span class="ao"></span>
+    
+    <span class="tu"></span>
+  </body>
+</html>
