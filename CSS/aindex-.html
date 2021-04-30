@@ -1,18 +1,34 @@
 
 
 
-
+<!-- 利用padding实现比例固定的头图效果 -->
 
 
 <!DOCTYPE html>
 <html>
   <head>
     <style>
+        .constr {
 
+        }
+
+        .box {
+          padding: 10% 50%;
+          position: relative;
+        }
+        
+        .box > img {
+          position: absolute;
+          width: 100%; height: 100%;
+          left: 0; top: 0;
+        }
     </style>
   </head>
   <body>
-    <div>
+    <div class="constr">
+      <div class="box">
+        <img src="./img/cover-5-1.jpg" alt="">
+      </div>
     </div>
   </body>
 </html>
